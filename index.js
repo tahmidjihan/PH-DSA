@@ -1,50 +1,51 @@
-// Function to reverse a string
-function reverseString(str) {
-  if (typeof str !== 'string') return 'Input must be a string';
-  return str.split('').reverse().join('');
+function reverseString(s) {
+  if (typeof s !== 'string') return 'Input should be a valid string';
+  if (s.length > 1000) return 'Input length should be less than or equal 100';
+  return s.split('').reverse().join('');
 }
 
-// Function FizzBuzz that takes a positive integer n and returns an array of the numbers from 1 to n, but for multiples of three it returns "Fizz" instead of the number, for multiples of five it returns "Buzz", and for numbers which are multiples of both three and five it returns "FizzBuzz".
-function FizzBuzz(n) {
-  if (typeof n !== 'number' || n < 1) return 'Input must be a positive integer';
-  if (n > 100) return 'Input must be less than or equal to 100';
-  if (n === 1 || n === 0) return 'input must be greater than 1';
-  const result = [];
+function fizzBuzz(n) {
+  if (typeof n !== 'number') return 'the input should be a valid number';
+  if (!(1 <= n) && !(n <= 100))
+    return 'The input should be more than or equal one or less than or equal 100';
+  const arr = [];
   for (let i = 1; i <= n; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-      result.push('FizzBuzz');
-    } else if (i % 3 === 0) {
-      result.push('Fizz');
-    } else if (i % 5 === 0) {
-      result.push('Buzz');
+    if (i % 3 == 0 && i % 5 == 0) {
+      arr.push('FizzBuzz');
+    }
+    if (i % 3 == 0) {
+      arr.push('Fizz');
+    }
+    if (i % 5 == 0) {
+      arr.push('Buzz');
     } else {
-      result.push(i);
+      arr.push(i);
     }
   }
-  return result;
+  return arr;
+}
+function findLargest(nums) {
+  if (!Array.isArray(nums)) return 'input should be an array';
+  if (nums.length === 0) return 'array should contain something';
+  if (nums.some((item) => typeof item !== 'number'))
+    return 'the values in the array should be number';
+  return Math.max(...nums);
 }
 
-// Function to find the largest number in an array
-function largestOfArray(arr) {
-  if (!Array.isArray(arr)) return 'Input must be an array';
-  if (arr.length === 0) return 'Input array cannot be empty';
-  return Math.max(...arr);
+function isPalindrome(s) {
+  if (typeof s !== 'string') return 'Input should be a string';
+  const cleanedStr = s.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+  const reversed = s.split('').reverse().join('');
+  return s === reversed;
 }
-
-// Function to check if a string is a palindrome
-function isPalindrome(str) {
-  if (typeof str !== 'string') return 'Input must be a string';
-  const cleanedStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
-  const reversedStr = cleanedStr.split('').reverse().join('');
-  return cleanedStr === reversedStr;
-}
-
-// Sum of an array of numbers
-function sumOfArray(arr) {
-  if (!Array.isArray(arr)) return 'Input must be an array';
-  if (arr.some((item) => typeof item !== 'number'))
-    return 'All items in the array must be numbers';
-  return arr.reduce((sum, num) => sum + num, 0);
+function sumOfArray(nums) {
+  if (!Array.isArray(nums)) return 'input should be an array';
+  if (nums.length === 0) return 'array should contain something';
+  if (nums.some((item) => typeof item !== 'number'))
+    return 'the values in the array should be number';
+  if (nums.length > 500)
+    return ' The input length should be less than or equal 500';
+  return nums.reduce((sum, num) => sum + num, 0);
 }
 
 // Factorial of a number
@@ -65,9 +66,9 @@ function factorial(n) {
 console.log(factorial(10));
 
 // Even or Odd
-function evenOrOdd(arr) {
-  if (!Array.isArray(arr)) return 'Input must be an array';
-  const result = arr.map((num) => {
+function evenOrOdd(nums) {
+  if (!Array.isArray(nums)) return 'Input must be an array';
+  const result = nums.map((num) => {
     if (typeof num !== 'number')
       return 'All items in the array must be numbers';
     return num % 2 === 0 && num;
@@ -86,14 +87,14 @@ function fibonacci(n) {
   return sequence;
 }
 // Function to find the lowest number in an array
-function lowestOfArray(arr) {
-  if (!Array.isArray(arr)) return 'Input must be an array';
-  if (arr.length === 0) return 'Input array cannot be empty';
-  return Math.min(...arr);
+function lowestOfArray(nums) {
+  if (!Array.isArray(nums)) return 'Input must be an array';
+  if (nums.length === 0) return 'Input array cannot be empty';
+  return Math.min(...nums);
 }
 
 // Function to remove duplicates from an array
-function removeDuplicates(arr) {
-  if (!Array.isArray(arr)) return 'Input must be an array';
-  return [...new Set(arr)];
+function removeDuplicates(nums) {
+  if (!Array.isArray(nums)) return 'Input must be an array';
+  return [...new Set(nums)];
 }
